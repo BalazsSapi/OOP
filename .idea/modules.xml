@@ -3,8 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Oop.2025.iml" filepath="$PROJECT_DIR$/.idea/Oop.2025.iml" />
-      <module fileurl="file://$PROJECT_DIR$/labor-01/labor-01.iml" filepath="$PROJECT_DIR$/labor-01/labor-01.iml" />
-      <module fileurl="file://$PROJECT_DIR$/labor-02/labor-02.iml" filepath="$PROJECT_DIR$/labor-02/labor-02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/labor-02/labor-01.iml" filepath="$PROJECT_DIR$/labor-02/labor-01.iml" />
       <module fileurl="file://$PROJECT_DIR$/labor-03/labor-03.iml" filepath="$PROJECT_DIR$/labor-03/labor-03.iml" />
       <module fileurl="file://$PROJECT_DIR$/labor-04/labor-04.iml" filepath="$PROJECT_DIR$/labor-04/labor-04.iml" />
       <module fileurl="file://$PROJECT_DIR$/labor-05/labor-05.iml" filepath="$PROJECT_DIR$/labor-05/labor-05.iml" />
