@@ -18,18 +18,16 @@ public class Department {
         departments.add(department);
     }
 
-    public ArrayList<String> values() {
+    public static  ArrayList<String> values() {
         return departments;
     }
 
-    public String valueOf(String department) {
-        for (String d : departments) {
-            if (d.equalsIgnoreCase(department)) {
-                return d;
-            }
-        }
-        System.out.println("Department not found!");
-        return null;
+    public static int valueOf(String department) {
+        return departments.indexOf(department);
+    }
+
+    public static String indexToString(int department) {
+        return departments.get(department);
     }
 
     public static boolean containsDepartment(String department) {

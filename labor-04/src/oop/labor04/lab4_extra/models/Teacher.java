@@ -8,8 +8,8 @@ public class Teacher {
     private final String teacherID;
     private final String firstName;
     private String lastName;
-    private String degree;
-    private String department;
+    private int degree;
+    private int department;
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -19,39 +19,39 @@ public class Teacher {
         if(Degree.containsDegree(degree.toUpperCase())==false) {
             Degree.addDegree(degree.toUpperCase());
         }
-        this.degree = degree.toUpperCase();
+        this.degree = Degree.valueOf(degree.toUpperCase());
     }
 
     public void setDepartment(String department) {
         if(Department.containsDepartment(department.toUpperCase())==false) {
-            Department.addDepartment(degree.toUpperCase());
+            Department.addDepartment(department.toUpperCase());
         }
-        this.department = department.toUpperCase();
+        this.department = Department.valueOf(department.toUpperCase());
     }
 
     public Teacher(String firstName, String lastName, String degree, String department) {
         this.firstName = firstName;
         this.lastName = lastName;
         if(Department.containsDepartment(department.toUpperCase())==false) {
-            Department.addDepartment(degree.toUpperCase());
+            Department.addDepartment(department.toUpperCase());
         }
-        this.department = department.toUpperCase();
+        this.department = Department.valueOf(department.toUpperCase());
         if(Degree.containsDegree(degree.toUpperCase())==false) {
             Degree.addDegree(degree.toUpperCase());
         }
-        this.degree = degree.toUpperCase();
+        this.degree = Degree.valueOf(degree.toUpperCase());
         this.teacherID=String.format("%d08",currentNumberOfTeachers++);
     }
 
     public String toString(){
-        return "Teacher: " + firstName+" "+lastName+":\n\t\t-degree: "+degree+"\n\t\t-department: "+department;
+        return "Teacher: " + firstName+" "+lastName+":\n\t\t-degree: "+Degree.indexToString(degree)+"\n\t\t-department: "+Department.indexToString(department);
     }
 
     public String getDegree() {
-        return degree;
+        return Degree.indexToString(degree);
     }
 
     public String getDepartment() {
-        return department;
+        return Degree.indexToString(department);
     }
 }

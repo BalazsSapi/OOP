@@ -40,8 +40,16 @@ public class Course {
         return studentsString;
     }
 
+    private String studentsToString(ArrayList<Student> students){
+        String studentsString="";
+        for(Student student:students){
+            studentsString+="\t\t"+student+"\n";
+        }
+        return studentsString;
+    }
+
     public String toString(){
-        return "Course: "+courseID+"\n\t"+teacher+"\n\tCredits: "+numberOfCredits + "\n\tOccours every: " + dayOfCourse + "\n\tEnrolled students: " + students.size() + "\n" + studentsToString() +"\n";
+        return "Course: "+courseID+"\n\t"+teacher+"\n\tCredits: "+numberOfCredits + "\n\tOccours every: " + dayOfCourse + "\n\tEnrolled students: " + students.size() + "\n" + studentsToString(students) +"\n";
     }
 
     public void setTeacher(Teacher teacher){

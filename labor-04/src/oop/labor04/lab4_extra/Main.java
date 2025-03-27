@@ -7,7 +7,11 @@ import java.time.DayOfWeek;
 
 public class Main {
     public static void main(String[] args) {
+        Major  m = new Major();
+        Degree d = new Degree();
+        Department  d1 = new Department();
         Student student1 = new Student("AVLMO7", "Anne0", "Bell0", "Dentistry0");
+        System.out.println(Major.values());
         Student student2 = new Student("AVLMO8", "Anne1", "Bell1", "Dentistry1");
         Student student3 = new Student("AVLMO9", "Anne2", "Bell2", "Dentistry2");
         Student student4 = new Student("AVLM10", "Anne3", "Bell3", "Dentistry3");
@@ -23,6 +27,5 @@ public class Main {
         course1.getEnrolledStudents().add(student2);
         course1.getEnrolledStudents().add(student3);
         System.out.println(course1);
-        // toString javitasa
     }
 }

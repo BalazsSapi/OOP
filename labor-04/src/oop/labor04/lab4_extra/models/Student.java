@@ -6,7 +6,7 @@ public class Student {
     private final String neptunCode;
     private final String firstName;
     private final String lastName;
-    private String major;
+    private int major;
 
     public Student(String neptunCode, String firstName, String lastName, String major) {
         this.firstName = firstName;
@@ -15,11 +15,11 @@ public class Student {
         if(Major.containsMajor(major)==false) {
             Major.addMajor(major.toUpperCase());
         }
-        this.major=major.toUpperCase();
+        this.major=Major.valueOf(major.toUpperCase());
     }
 
     public String toString(){
-        return "\t\t* " + firstName + " " + lastName+": \n\t\t\t- Neptun ID: " + neptunCode + "\n\t\t\t- Major: " + major ;
+        return "* " + firstName + " " + lastName+": \n\t\t\t- Neptun ID: " + neptunCode + "\n\t\t\t- Major: " + Major.indexToString(major);
     }
 
     public String getNeptunCode() {
@@ -27,6 +27,6 @@ public class Student {
     }
 
     public String getMajor() {
-        return major;
+        return Major.indexToString(major);
     }
 }

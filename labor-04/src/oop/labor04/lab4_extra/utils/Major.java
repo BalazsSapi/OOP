@@ -23,18 +23,16 @@ public class Major {
         majors.add(major);
     }
 
-    public ArrayList<String> values() {
+    public static ArrayList<String> values() {
         return majors;
     }
 
-    public String valueOf(String major) {
-        for (String m : majors) {
-            if (m.equalsIgnoreCase(major)) {
-                return m;
-            }
-        }
-        System.out.println("Major not found!");
-        return null;
+    public static int valueOf(String major) {
+        return  majors.indexOf(major);
+    }
+
+    public static String indexToString(int major) {
+        return majors.get(major);
     }
 
     public static boolean containsMajor(String major) {

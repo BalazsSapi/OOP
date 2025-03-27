@@ -15,18 +15,16 @@ public class Degree {
         degrees.add(degree);
     }
 
-    public ArrayList<String> values() {
+    public static ArrayList<String> values() {
         return degrees;
     }
 
-    public String valueOf(String degree) {
-        for (String d : degrees) {
-            if (d.equalsIgnoreCase(degree)) {
-                return d;
-            }
-        }
-        System.out.println("Degree not found!");
-        return null;
+    public static String indexToString(int degree) {
+        return degrees.get(degree);
+    }
+
+    public static int valueOf(String degree) {
+        return degrees.indexOf(degree);
     }
 
     public static boolean containsDegree(String degree) {
