@@ -34,10 +34,21 @@ public class Main {
         System.out.println(course1);*/
         courses = readUniversitiesFromFile("university.csv");
         enrollStudentsFromFile("students.csv");
-        for(Course c : courses){
+        /*for(Course c : courses){
             System.out.println(c+"\n\n");
+        }*/
+        //enrolledStudentsByMajor("COMPUTER_SCIENCE","OSX7G");
+        /*ArrayList<Course> coursesByTeacherDegree=coursesByTeacherDegree("ASSISTANT");
+        for(Course c:coursesByTeacherDegree){
+            System.out.println(c);
+        }*/
+        //System.out.println(nrOfCoursesByDay(DayOfWeek.FRIDAY));
+        cancelEnrollments("cancellation.csv");
+        for(Course c : courses){
+            System.out.println(c);
         }
     }
+
     public static ArrayList<Course> readUniversitiesFromFile(String fileName) {
         File file= new File(fileName);
         ArrayList<Course> courses=new ArrayList<>();
@@ -59,6 +70,7 @@ public class Main {
         }
         return courses;
     }
+
     public static void enrollStudentsFromFile(String fileName) {
         File file = new File(fileName);
         try(Scanner scanner=new Scanner(file)){
@@ -76,6 +88,56 @@ public class Main {
                             break;
                         }
                     }
+                }
+            }
+        }
+        catch (FileNotFoundException e){
+            System.out.println("File not found");
+            e.printStackTrace();
+        }
+    }
+
+    public static void enrolledStudentsByMajor(String major, String courseId) {
+        for(Course c : courses){
+            if(c.getCourseID().equals(courseId)){
+                for(Student s : c.getEnrolledStudents()){
+                    if(s.getMajor().equals(major.toUpperCase())){
+                        System.out.println(s+"\n\n");
+                    }
+                }
+                break;
+            }
+        }
+    }
+
+    public static ArrayList<Course> coursesByTeacherDegree(String degree){
+        ArrayList<Course> coursesByTeacherDegree=new ArrayList<>();
+        for(Course c : courses){
+            if(c.getTeacher().getDegree().equals(degree.toUpperCase())){
+                coursesByTeacherDegree.add(c);
+            }
+        }
+        return coursesByTeacherDegree;
+    }
+
+    public static int nrOfCoursesByDay(DayOfWeek day) {
+        int nrOfCourses=0;
+        for(Course c : courses){
+            if(c.getDayOfCourse()==day){
+                nrOfCourses++;
+            }
+        }
+        return nrOfCourses;
+    }
+
+    public static void cancelEnrollments(String fileName) {
+        File file = new File(fileName);
+        try(Scanner scanner=new Scanner(file)){
+            while(scanner.hasNextLine()){
+                String line=scanner.nextLine().trim();
+                System.out.println(line+"\n");
+                for(Course c : courses){
+                    c.cancelEnrollmentOfStudent(line);
                 }
             }
         }

@@ -27,6 +27,7 @@ public class Course {
         for(Student student:students){
             if(student.getNeptunCode().equals(neptunCode)){
                 students.remove(student);
+                break;
             }
         }
     }
