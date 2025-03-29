@@ -11,7 +11,9 @@ public class MyDate {
             this.month = month;
             this.day = day;
         }
-        System.out.println("Invalid date!");
+        else {
+            //System.out.println("Invalid date!");
+        }
     }
 
     public int getYear() {
