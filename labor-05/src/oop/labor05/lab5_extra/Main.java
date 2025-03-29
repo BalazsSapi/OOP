@@ -25,7 +25,7 @@ public class Main {
         printPersons(persons);
         System.out.println("\n");
         borrowBooks(persons,libraries);
-
+        printPersonsThatNeedToReturn(persons);
     }
 
     public static List<Library> readLibraries(String fileName){
@@ -53,7 +53,7 @@ public class Main {
                         split[2]=split2[2];
                         break;
                     }
-                    else if(split2[0].equals("BOOK")){
+                    else if(split2[0].equals("BOOK") && split2.length==4 && !split2[1].equals("LIBRARY")){
                         libraries.get(libraries.indexOf(library)).addBook(new Book(split2[3].trim(),split2[1].trim(),split2[2].trim()));
                     }
                 }
@@ -148,6 +148,18 @@ public class Main {
                                         person.borrowBook(book);
                                         book.setCheckedOut(true);
                                     }
+                                    else{
+                                        System.out.println(book);
+                                        for(Library library2: libraries){
+                                            Book book2=library2.findBook(book.getTitle());
+                                            if(book2!=null && book2.isCheckedOut()==false){
+                                                person.borrowBook(book2);
+                                                book2.setCheckedOut(true);
+                                                ok3=true;
+                                                break;
+                                            }
+                                        }
+                                    }
                                     break;
                                 }
                             }
@@ -179,5 +191,11 @@ public class Main {
                 "Person ID not found: "+ invalidPersonNotFound+ "\n"+
                 "Book ID not found: "+ invalidBookId+"\n"+
                 "Book was already borrowed: " +invalidBookAlreadyBorrowed+"\n");
+    }
+
+    public static void printPersonsThatNeedToReturn(List<Person> persons){
+        for(Person person:persons){
+            System.out.println(person+ " has " + person.getNumberOfBooks() + " books borrowed.");
+        }
     }
 }

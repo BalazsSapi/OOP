@@ -45,7 +45,7 @@ public class Library {
         return books.size();
     }
 
-    public Book findBookBy(String title) {
+    public Book findBook(String title) {
         for (Book book : books) {
             if (book.getTitle().equals(title)) {
                 return book;

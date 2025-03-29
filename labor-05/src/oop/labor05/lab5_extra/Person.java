@@ -62,4 +62,8 @@ public class Person {
     public String getId() {
         return id;
     }
+
+    public int getNumberOfBooks(){
+        return books.size();
+    }
 }
