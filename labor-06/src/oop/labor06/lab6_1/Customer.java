@@ -12,8 +12,7 @@ public class Customer {
     public Customer(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        numCustomers++;
-        ID=numCustomers;
+        ID=++numCustomers;
     }
 
     public int getID() {

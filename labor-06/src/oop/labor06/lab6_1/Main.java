@@ -2,6 +2,10 @@ package oop.labor06.lab6_1;
 
 import org.w3c.dom.ls.LSOutput;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
@@ -41,10 +45,15 @@ public class Main {
             for (String accNumber : accNumbers) {
 
                 BankAccount account = c.getAccount(accNumber);
-                account.deposit((j + 1) * 10 * j);
+                account.deposit((j + 1) * 10 + i*10);
                 j++;
             }
         }
-        System.out.println(bank);
+        System.out.println(bank.getCustomer(2));
+        printCustomersOfBank("bank_customers.csv", bank);
+    }
+
+    public static void printCustomersOfBank(String fileName, Bank bank) {
+        bank.printCustomersToFile(fileName);
     }
 }
