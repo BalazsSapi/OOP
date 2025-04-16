@@ -22,7 +22,7 @@ public class CircularQueue implements IQueue {
 
     @Override
     public boolean isFull() {
-        return rear  == (front+1)%capacity; //itt a hiba
+        return (rear+1)%capacity  == front;
     }
 
     @Override
@@ -31,11 +31,15 @@ public class CircularQueue implements IQueue {
             System.out.println("Queue is full");
             return;
         }
-        if(isEmpty()){
-            front = (front+1)%capacity;
+        if (isEmpty()) {
+            front = 0;
+            rear = 0;
         }
-        items[(rear+1)%capacity] = item;
-        rear = (rear+1)%capacity;
+        else {
+            rear = (rear + 1) % capacity;
+        }
+        items[rear] = item;
+
     }
 
     @Override
@@ -47,6 +51,7 @@ public class CircularQueue implements IQueue {
         Object o=items[front];
         if (front == rear) {
             front=-1;
+            rear=-1;
         }
         else {
             front = (front + 1) % capacity;
@@ -60,9 +65,31 @@ public class CircularQueue implements IQueue {
             System.out.println("Queue is empty");
             return;
         }
-        int copyFront=front;
-        while (copyFront%capacity != rear) {
-            System.out.print(items[(copyFront++)%capacity] + " ");
+        int i = front;
+        while (true) {
+            System.out.print(items[i] + " ");
+            if (i == rear) break;
+            i = (i + 1) % capacity;
+        }
+        System.out.println();
+    }
+
+    @Override
+    public boolean equals (Object o) {
+        if (!(o instanceof CircularQueue)) {
+            return false;
+        }
+        CircularQueue q = (CircularQueue) o;
+        int i = front;
+        int j = q.front;
+        if (isEmpty()!=q.isEmpty()) {
+            return false;
+        }
+
+        while (true) {
+            if() {
+
+            }
         }
     }
 }

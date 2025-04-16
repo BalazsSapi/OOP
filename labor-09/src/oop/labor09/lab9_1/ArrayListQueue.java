@@ -54,7 +54,7 @@ public class ArrayListQueue implements IQueue {
 
     @Override
     public boolean equals(Object o) {
-        if(o==null || !(o instanceof ArrayListQueue)) {
+        if(!(o instanceof ArrayListQueue)) {
             return false;
         }
         ArrayListQueue q = (ArrayListQueue)o;
