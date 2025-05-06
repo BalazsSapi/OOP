@@ -22,7 +22,12 @@ public class Manager extends Employee{
     @Override
     public String toString() {
         return "Manager{" +
-                "department='" + department + '\'' +
+                "firstName='" + super.getFirstName() + '\'' +
+                ", lastName='" + super.getLastName() + '\'' +
+                ", ID='" + super.getID() + '\'' +
+                ", salary=" + super.getSalary() +
+                ", birthDate=" + super.getBirthDate() +
+                ", department='" + department + '\'' +
                 '}';
     }
 }

@@ -37,10 +37,10 @@ public class Company {
                 String line = sc.nextLine();
                 String[] lineArr = line.split(",");
                 if(lineArr.length==7){
-                    employees.add(new Manager(lineArr[1].trim(),lineArr[0].trim(),Double.parseDouble(lineArr[2]),new MyDate(Integer.parseInt(lineArr[3]),Integer.parseInt(lineArr[4]),Integer.parseInt(lineArr[5])),lineArr[6]));
+                    employees.add(new Manager(lineArr[1].trim(),lineArr[0].trim(), Double.parseDouble(lineArr[2].trim()), new MyDate(Integer.parseInt(lineArr[3].trim()),Integer.parseInt(lineArr[4].trim()),Integer.parseInt(lineArr[5].trim())), lineArr[6].trim()));
                 }
                 else{
-                    employees.add(new Employee(lineArr[1].trim(),lineArr[0].trim(),Double.parseDouble(lineArr[2]),new MyDate(Integer.parseInt(lineArr[3]),Integer.parseInt(lineArr[4]),Integer.parseInt(lineArr[5]))));
+                    employees.add(new Employee(lineArr[1].trim(),lineArr[0].trim(),Double.parseDouble(lineArr[2].trim()),new MyDate(Integer.parseInt(lineArr[3].trim()),Integer.parseInt(lineArr[4].trim()),Integer.parseInt(lineArr[5].trim()))));
                 }
             }
         }
