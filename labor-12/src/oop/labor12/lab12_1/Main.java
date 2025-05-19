@@ -11,13 +11,32 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //ArrayListDictionary class test
-        /*IDictionary dictionary = ArrayListDictionary.newInstance();
+        //HashSetDictionary class test
+
+        //Itt lehet ki kell cserélni a fillDictionaryFromFile(String filename, IDictionary dictionary)-ban az instanceOf-ot HashSetDictionary-re
+        /*IDictionary dictionary = HashSetDictionary.newInstance();
         fillDictionaryFromFile("english_dictionary", dictionary);
-        System.out.println(dictionary.find("eperep"));
+        System.out.println(dictionary.find("black"));
         System.out.println(dictionary.size());*/
 
-        DictionaryService dictionary= new DictionaryService(DictionaryType.ARRAY_LIST);
+        /*DictionaryService dictionary= new DictionaryService(DictionaryType.HASH_SET);
+        fillDictionaryFromFile(IDictionary.DICTIONARY_FILE, dictionary);
+        //System.out.println(dictionary.findWord("eperep"));
+        ArrayList<String> wordsNotFound= new ArrayList<>();
+        wordsNotFound=dictionary.findWordsFile("words_to_find");
+        for(String word: wordsNotFound){
+            System.out.println(word+" ");
+        }*/
+
+        //TreeSetDictionary class test
+
+        //Itt lehet ki kell cserélni a fillDictionaryFromFile(String filename, IDictionary dictionary)-ban az instanceOf-ot TreeSetDictionary-re
+        /*IDictionary dictionary = TreeSetDictionary.newInstance();
+        fillDictionaryFromFile("english_dictionary", dictionary);
+        System.out.println(dictionary.find("black"));
+        System.out.println(dictionary.size());*/
+
+        DictionaryService dictionary= new DictionaryService(DictionaryType.TREE_SET);
         fillDictionaryFromFile(IDictionary.DICTIONARY_FILE, dictionary);
         //System.out.println(dictionary.findWord("eperep"));
         ArrayList<String> wordsNotFound= new ArrayList<>();
@@ -26,12 +45,13 @@ public class Main {
             System.out.println(word+" ");
         }
     }
+
     public static void fillDictionaryFromFile(String filename, IDictionary dictionary) {
-        if(dictionary instanceof ArrayListDictionary) {
+        if (dictionary instanceof TreeSetDictionary) {
             File file = new File(filename);
-            try(Scanner scanner = new Scanner(file)){
+            try (Scanner scanner = new Scanner(file)) {
                 int line = 0;
-                while(scanner.hasNextLine()) {
+                while (scanner.hasNextLine()) {
                     String word = scanner.nextLine();
                     dictionary.add(word);
                     //System.out.println(line++ + ": " + word);
@@ -45,9 +65,9 @@ public class Main {
 
     public static void fillDictionaryFromFile(String filename, DictionaryService dictionary) {
         File file = new File(filename);
-        try(Scanner scanner = new Scanner(file)){
+        try (Scanner scanner = new Scanner(file)) {
             int line = 0;
-            while(scanner.hasNextLine()) {
+            while (scanner.hasNextLine()) {
                 String word = scanner.nextLine();
                 dictionary.getDictionary().add(word);
                 //System.out.println(line++ + ": " + word);
@@ -58,3 +78,4 @@ public class Main {
         }
     }
 }
+
